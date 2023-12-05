@@ -1,9 +1,16 @@
 <script>
+import { store } from '../store.js';
+
 
 export default {
     name: 'AppMovie',
     props: {
         card: Object
+    },
+    data() {
+        return {
+            store
+        }
     },
     mounted() {
         console.log('Creato AppMovie');
@@ -27,12 +34,12 @@ export default {
         </div>
         <!-- vote -->
         <p><span class="fw-bold text-warning">Voto: </span> {{ card.vote_average }}</p>
-        <!-- originl language -->
-        <p><span class="fw-bold text-warning">Lingua Originale: </span> {{ card.original_language }}</p>
         <!-- flag -->
         <div class="d-flex justify-content-center">
-            <img v-if="img == null" :src="getFlags(card.original_language)" alt="flag">
+            <img v-if="this.store.flags.includes(card.original_language)" :src="getFlags(card.original_language)" alt="flag">
         </div>
+        <!-- originl language -->
+        <p><span class="fw-bold text-warning">Lingua Originale: </span> {{ card.original_language }}</p>
         <!-- overview -->
         <p><span class="fw-bold text-warning">Overview: </span> {{ card.overview }}</p>
     </div>
