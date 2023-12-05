@@ -26,7 +26,7 @@ export default {
                 url: 'https://api.themoviedb.org/3/search/movie',
                 params: { query: `${store.searchTitle}`, 
                 include_adult: 'false', 
-                language: 'en-US', 
+                language: 'it-IT', 
                 page: '1',
                 api_key: '07817ee9ac4818e99a782b133fd5bf38' 
             },
@@ -35,6 +35,16 @@ export default {
                     // Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNzgxN2VlOWFjNDgxOGU5OWE3ODJiMTMzZmQ1YmYzOCIsInN1YiI6IjY1NmRiZmU5NGE0YmY2MDBjNTAzNTIwOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RQk5iEa9mbLnB3qZJCNjgy9yBW53mRfX3zH0Xr1DslY'
                 }
             };
+            
+            axios
+            .request(moviesUrl)
+            .then(function (response) {
+                console.log(response.data.results);
+                store.movies = response.data.results;
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
 
             // series
             const seriesUrl = {
@@ -51,16 +61,6 @@ export default {
                     // Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNzgxN2VlOWFjNDgxOGU5OWE3ODJiMTMzZmQ1YmYzOCIsInN1YiI6IjY1NmRiZmU5NGE0YmY2MDBjNTAzNTIwOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RQk5iEa9mbLnB3qZJCNjgy9yBW53mRfX3zH0Xr1DslY'
                 }
             };
-
-            axios
-            .request(moviesUrl)
-            .then(function (response) {
-                console.log(response.data.results);
-                store.movies = response.data.results;
-            })
-            .catch(function (error) {
-                console.error(error);
-            });
 
             axios
             .request(seriesUrl)
@@ -81,17 +81,32 @@ export default {
         <AppHeader @search="getContents()" />
     </header>
 
-    <main class="bg-secondary">
+    <vue-flip :active-hover="true" width="200px" height="50px">
+          <template v-slot:front class="front">
+            front
+          </template>
+          <template v-slot:back class="back">
+            back
+          </template>
+        </vue-flip>
+
+    <main class="">
         <AppMain />
     </main>
 </template>
 
-<style scoped>
+<!-- scss -->
+<style lang="scss">
+@use './styles/general.scss';
+</style>
+
+<style scoped lang="scss">
 header {
     height: 6rem;
 }
 
 main {
     height: calc(100% - 6rem);
+    background-color: black;
 }
 </style>
