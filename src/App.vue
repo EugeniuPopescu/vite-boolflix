@@ -24,10 +24,15 @@ export default {
             const moviesUrl = {
                 method: 'GET',
                 url: 'https://api.themoviedb.org/3/search/movie',
-                params: { query: `${store.searchTitle}`, include_adult: 'false', language: 'en-US', page: '1' },
+                params: { query: `${store.searchTitle}`, 
+                include_adult: 'false', 
+                language: 'en-US', 
+                page: '1',
+                api_key: '07817ee9ac4818e99a782b133fd5bf38' 
+            },
                 headers: {
                     accept: 'application/json',
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNzgxN2VlOWFjNDgxOGU5OWE3ODJiMTMzZmQ1YmYzOCIsInN1YiI6IjY1NmRiZmU5NGE0YmY2MDBjNTAzNTIwOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RQk5iEa9mbLnB3qZJCNjgy9yBW53mRfX3zH0Xr1DslY'
+                    // Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNzgxN2VlOWFjNDgxOGU5OWE3ODJiMTMzZmQ1YmYzOCIsInN1YiI6IjY1NmRiZmU5NGE0YmY2MDBjNTAzNTIwOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RQk5iEa9mbLnB3qZJCNjgy9yBW53mRfX3zH0Xr1DslY'
                 }
             };
 
@@ -35,10 +40,15 @@ export default {
             const seriesUrl = {
                 method: 'GET',
                 url: 'https://api.themoviedb.org/3/search/tv',
-                params: { query: `${store.searchTitle}`, include_adult: 'false', language: 'en-US', page: '1' },
+                params: { query: `${store.searchTitle}`, 
+                include_adult: 'false', 
+                language: 'en-US', 
+                page: '1',
+                api_key: '07817ee9ac4818e99a782b133fd5bf38' 
+            },
                 headers: {
                     accept: 'application/json',
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNzgxN2VlOWFjNDgxOGU5OWE3ODJiMTMzZmQ1YmYzOCIsInN1YiI6IjY1NmRiZmU5NGE0YmY2MDBjNTAzNTIwOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RQk5iEa9mbLnB3qZJCNjgy9yBW53mRfX3zH0Xr1DslY'
+                    // Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNzgxN2VlOWFjNDgxOGU5OWE3ODJiMTMzZmQ1YmYzOCIsInN1YiI6IjY1NmRiZmU5NGE0YmY2MDBjNTAzNTIwOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RQk5iEa9mbLnB3qZJCNjgy9yBW53mRfX3zH0Xr1DslY'
                 }
             };
 

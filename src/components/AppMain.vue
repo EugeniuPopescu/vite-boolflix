@@ -28,7 +28,7 @@ export default {
         <h2 v-if="store.movies.length > 0" class="text-center text-warning">Movies</h2>
         <div class="d-flex flex-wrap justify-content-around">
             <!-- AppMovie card -->
-            <AppMovie class="box mb-3" v-for="movie in store.movies" :card="movie"/>
+            <AppMovie class="mb-3" v-for="movie in store.movies" :card="movie"/>
         </div>
         <!-- AppSeries card -->
         <h2 v-if="store.series.length > 0" class="text-center text-warning">Series</h2>
