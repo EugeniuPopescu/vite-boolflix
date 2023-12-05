@@ -90,7 +90,7 @@ export default {
           </template>
         </vue-flip>
 
-    <main class="">
+    <main>
         <AppMain />
     </main>
 </template>
