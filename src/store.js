@@ -29,4 +29,5 @@ export const store = reactive({
     "ch",
     "cz",
   ],
+  coverImg: "http://image.tmdb.org/t/p/w300",
 });

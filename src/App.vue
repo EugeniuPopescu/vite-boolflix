@@ -81,15 +81,6 @@ export default {
         <AppHeader @search="getContents()" />
     </header>
 
-    <vue-flip :active-hover="true" width="200px" height="50px">
-          <template v-slot:front class="front">
-            front
-          </template>
-          <template v-slot:back class="back">
-            back
-          </template>
-        </vue-flip>
-
     <main>
         <AppMain />
     </main>
