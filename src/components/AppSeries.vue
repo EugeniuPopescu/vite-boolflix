@@ -43,9 +43,9 @@ export default {
                     <div class="back p-2">
                         <div class="text-center">
                             <!-- title -->
-                            <p class="fs-4"><span class="fw-bold text-warning">Titolo: </span> {{ card.title }}</p>
+                            <p class="fs-4"><span class="fw-bold text-warning">Titolo: </span> {{ card.name }}</p>
                             <!-- original title -->
-                            <p><span class="fw-bold text-warning">Titolo Originale: </span> {{ card.original_title }}</p>
+                            <p><span class="fw-bold text-warning">Titolo Originale: </span> {{ card.original_name }}</p>
                         </div>
                         <!-- vote -->
                         <p><span class="fw-bold text-warning">Voto: </span> {{ card.vote_average }}</p>

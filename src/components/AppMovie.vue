@@ -17,6 +17,9 @@ export default {
     methods: {
         getFlags(flag) {
             return new URL(`/public/flags/${flag}.svg`, import.meta.url).href;
+        },
+        getVote(n) {
+            return Math.round(n/2);
         }
     }
 }
@@ -44,7 +47,10 @@ export default {
                             <p><span class="fw-bold text-warning">Titolo Originale: </span> {{ card.original_title }}</p>
                         </div>
                         <!-- vote -->
-                        <p><span class="fw-bold text-warning">Voto: </span> {{ card.vote_average }}</p>
+                        <p><span class="fw-bold text-warning">Voto: </span>
+                            <font-awesome-icon icon="fa-solid fa-star"
+                            class="text-warning" />
+                        </p>
                         <!-- flag -->
                         <div class="d-flex justify-content-center">
                             <img class="flag" v-if="this.store.flags.includes(card.original_language)"
