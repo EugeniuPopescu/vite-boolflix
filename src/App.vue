@@ -77,12 +77,12 @@ export default {
 </script>
 
 <template>
-    <header class="bg-dark text-danger d-flex align-items-center">
+    <header class="d-flex align-items-center z-10">
         <AppHeader @search="getContents()" />
     </header>
 
-    <main>
-        <AppMain />
+    <main >
+        <AppMain  />
     </main>
 </template>
 
@@ -94,10 +94,11 @@ export default {
 <style scoped lang="scss">
 header {
     height: 6rem;
+    color: #CD1818;
+    background-color: black;
 }
 
 main {
     height: calc(100% - 6rem);
-    background-color: black;
 }
 </style>

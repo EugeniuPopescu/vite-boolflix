@@ -44,5 +44,8 @@ export default {
 </template>
 
 <style scoped>
-
+h1 {
+    font-family: 'Silkscreen', sans-serif;
+    font-size: 5rem;
+}
 </style>
