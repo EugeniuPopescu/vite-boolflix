@@ -25,12 +25,12 @@ export default {
 
 <template>
     <div class="container-fluid">
-        <div class="row">
+        <div class="row d-flex justify-content-between">
 			<!-- title -->
             <div class="col-6">
                 <h1>Boolflix</h1>
             </div>
-            <div class="col-6 d-flex align-items-center">
+            <div class="col-3 d-flex align-items-center">
 				<!-- search input -->
                 <div class="input-group">
                     <input v-model="store.searchTitle" @keyup.enter="$emit('search')"

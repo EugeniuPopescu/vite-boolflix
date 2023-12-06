@@ -21,23 +21,23 @@ export default {
     methods: {
         getContents() {
             // movies
-            const moviesUrl = {
+            const option = {
                 method: 'GET',
-                url: 'https://api.themoviedb.org/3/search/movie',
-                params: { query: `${store.searchTitle}`, 
-                include_adult: 'false', 
-                language: 'it-IT', 
-                page: '1',
-                api_key: '07817ee9ac4818e99a782b133fd5bf38' 
-            },
-                headers: {
-                    accept: 'application/json',
-                    // Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNzgxN2VlOWFjNDgxOGU5OWE3ODJiMTMzZmQ1YmYzOCIsInN1YiI6IjY1NmRiZmU5NGE0YmY2MDBjNTAzNTIwOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RQk5iEa9mbLnB3qZJCNjgy9yBW53mRfX3zH0Xr1DslY'
-                }
+                params: {
+                    query: `${store.searchTitle}`,
+                    include_adult: 'false',
+                    language: 'it-IT',
+                    page: '1',
+                    api_key: '07817ee9ac4818e99a782b133fd5bf38'
+                },
+
             };
-            
+
+            // movie
+            option.url = 'https://api.themoviedb.org/3/search/movie';
+
             axios
-            .request(moviesUrl)
+            .request(option)
             .then(function (response) {
                 console.log(response.data.results);
                 store.movies = response.data.results;
@@ -46,24 +46,11 @@ export default {
                 console.error(error);
             });
 
-            // series
-            const seriesUrl = {
-                method: 'GET',
-                url: 'https://api.themoviedb.org/3/search/tv',
-                params: { query: `${store.searchTitle}`, 
-                include_adult: 'false', 
-                language: 'en-US', 
-                page: '1',
-                api_key: '07817ee9ac4818e99a782b133fd5bf38' 
-            },
-                headers: {
-                    accept: 'application/json',
-                    // Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNzgxN2VlOWFjNDgxOGU5OWE3ODJiMTMzZmQ1YmYzOCIsInN1YiI6IjY1NmRiZmU5NGE0YmY2MDBjNTAzNTIwOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RQk5iEa9mbLnB3qZJCNjgy9yBW53mRfX3zH0Xr1DslY'
-                }
-            };
+            // tv
+            option.url = 'https://api.themoviedb.org/3/search/tv';
 
             axios
-            .request(seriesUrl)
+            .request(option)
             .then(function (response) {
                 console.log(response.data.results);
                 store.series = response.data.results;
@@ -81,8 +68,8 @@ export default {
         <AppHeader @search="getContents()" />
     </header>
 
-    <main >
-        <AppMain  />
+    <main>
+        <AppMain />
     </main>
 </template>
 
