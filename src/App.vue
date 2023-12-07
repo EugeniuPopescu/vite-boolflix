@@ -41,9 +41,12 @@ export default {
             .then(function (response) {
                 console.log(response.data.results);
                 store.movies = response.data.results;
+                
+                store.apiResponse = true;
             })
             .catch(function (error) {
                 console.error(error);
+                store.apiResponse = true;
             });
 
             // tv
@@ -54,9 +57,12 @@ export default {
             .then(function (response) {
                 console.log(response.data.results);
                 store.series = response.data.results;
+
+                store.apiResponse = true;
             })
             .catch(function (error) {
                 console.error(error);
+                store.apiResponse = true;
             });
         }
     }
