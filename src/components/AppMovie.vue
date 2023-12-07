@@ -46,18 +46,31 @@ export default {
                             <!-- original title -->
                             <p><span class="fw-bold text-warning">Titolo Originale: </span> {{ card.original_title }}</p>
                         </div>
+                        
                         <!-- vote -->
                         <p><span class="fw-bold text-warning">Voto: </span>
-                            <font-awesome-icon icon="fa-solid fa-star"
-                            class="text-warning" />
+                            <span v-if="card.vote_average > 0">
+                                <font-awesome-icon v-for="n in getVote(card.vote_average)" icon="fa-solid fa-star"
+                                class="gold" />
+                                <font-awesome-icon v-for="n in (5 - getVote(card.vote_average))" icon="fa-solid fa-star"
+                                class="white" />
+                            </span>
+
+                            <span v-else>
+                                <font-awesome-icon v-for="n in 5" icon="fa-solid fa-star"
+                                class="white" />
+                            </span>
                         </p>
+                        
                         <!-- flag -->
                         <div class="d-flex justify-content-center">
                             <img class="flag" v-if="this.store.flags.includes(card.original_language)"
                             :src="getFlags(card.original_language)" alt="flag">
                         </div>
+                        
                         <!-- originl language -->
                         <p><span class="fw-bold text-warning">Lingua Originale: </span> {{ card.original_language }}</p>
+                        
                         <!-- overview -->
                         <p><span class="fw-bold text-warning">Overview: </span> {{ card.overview }}</p>
                     </div>
@@ -69,6 +82,15 @@ export default {
 </template>
 
 <style scoped>
+/* star */
+.gold {
+    color: goldenrod;
+}
+
+.white {
+    color: white;
+}
+
 .flag {
     width: 3rem;
     height: 2rem;
