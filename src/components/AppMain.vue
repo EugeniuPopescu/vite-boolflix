@@ -1,13 +1,11 @@
 <script>
-import AppMovie from './AppMovie.vue'
-import AppSeries from './AppSeries.vue'
+import AppCard from './AppCard.vue'
 import { store } from '../store';
 
 export default {
     name: 'AppMain',
     components: {
-        AppMovie,
-        AppSeries
+        AppCard,
     },
     data() {
         return {
@@ -30,7 +28,7 @@ export default {
             <h2 v-if="store.movies.length > 0" class="text-center text-light">Movies</h2>
             <div class="d-flex flex-wrap justify-content-center">
                 <!-- AppMovie card -->
-                <AppMovie class="mb-3" v-for="movie in store.movies" :card="movie"/>
+                <AppCard class="mb-3" v-for="movie in store.movies" :card="movie"/>
             </div>
         </section>
         
@@ -39,7 +37,7 @@ export default {
             <h2 v-if="store.series.length > 0" class="text-center text-light">Series</h2>
             <div class="d-flex flex-wrap justify-content-center">
                 <!-- AppMovie card -->
-                <AppSeries class="mb-3" v-for="serie in store.series" :card="serie"/>
+                <AppCard class="mb-3" v-for="serie in store.series" :card="serie"/>
             </div>
         </section>
     </div>

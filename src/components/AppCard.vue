@@ -2,7 +2,7 @@
 import { store } from '../store.js';
 
 export default {
-    name: 'AppSeries',
+    name: 'AppCard',
     props: {
         card: Object
     },
@@ -12,7 +12,7 @@ export default {
         }
     },
     mounted() {
-        console.log('Creato AppSeries');
+        console.log('Creato AppCard');
     },
     methods: {
         getFlags(flag) {
@@ -26,12 +26,8 @@ export default {
 </script>
 
 <template>
-    <!-- AppSeries, serie card -->
-    <div class="box text-light p-2 mx-2">
-
-
-
-
+    <!-- AppCard, movie card -->
+    <div class="box text-light mx-2">
         <!-- flip card -->
         <div class="flip-card">
             <div class="flip-card-inner">
@@ -40,21 +36,32 @@ export default {
                     <img v-if="card.poster_path" :src="store.coverImg + card.poster_path" alt="">
                     <p v-else class="fs-4">img Not Aviable 🥲</p>
                 </div>
-
+    
                 <!-- back -->
                 <div class="flip-card-back overflow-y-scroll">
                     <div class="back p-2">
                         <div class="text-center">
                             <!-- title -->
-                            <p class="fs-4"><span class="fw-bold text-warning">Titolo: </span> {{ card.name }}</p>
+                            <p v-if="card.title" class="fs-4"><span class="fw-bold text-warning">Titolo: </span> {{ card.title }}</p>
+                            <p v-else class="fs-4"><span class="fw-bold text-warning">Titolo: </span> {{ card.name }}</p>
                             <!-- original title -->
-                            <p><span class="fw-bold text-warning">Titolo Originale: </span> {{ card.original_name }}</p>
+                            <p v-if="card.original_title"><span class="fw-bold text-warning">Titolo Originale: </span> {{ card.original_title }}</p>
+                            <p v-else><span class="fw-bold text-warning">Titolo Originale: </span> {{ card.original_name }}</p>
                         </div>
                         
                         <!-- vote -->
                         <p><span class="fw-bold text-warning">Voto: </span>
-                            <font-awesome-icon v-for="n in getVote(card.vote_average)" icon="fa-solid fa-star"
-                            class="text-warning" />
+                            <span v-if="card.vote_average > 0">
+                                <font-awesome-icon v-for="n in getVote(card.vote_average)" icon="fa-solid fa-star"
+                                class="gold" />
+                                <font-awesome-icon v-for="n in (5 - getVote(card.vote_average))" icon="fa-solid fa-star"
+                                class="white" />
+                            </span>
+
+                            <span v-else>
+                                <font-awesome-icon v-for="n in 5" icon="fa-solid fa-star"
+                                class="white" />
+                            </span>
                         </p>
                         
                         <!-- flag -->
@@ -63,7 +70,7 @@ export default {
                             :src="getFlags(card.original_language)" alt="flag">
                         </div>
                         
-                        <!-- original language -->
+                        <!-- originl language -->
                         <p><span class="fw-bold text-warning">Lingua Originale: </span> {{ card.original_language }}</p>
                         
                         <!-- overview -->
@@ -73,9 +80,19 @@ export default {
             </div>
         </div>
     </div>
+
 </template>
 
 <style scoped>
+/* star */
+.gold {
+    color: goldenrod;
+}
+
+.white {
+    color: white;
+}
+
 .flag {
     width: 3rem;
     height: 2rem;
